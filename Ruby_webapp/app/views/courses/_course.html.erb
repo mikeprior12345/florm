@@ -1,0 +1,37 @@
+<div class="container">
+<div class="card-group">
+    <div class="mx-auto d-block">
+              <% if course.image.attached? %>
+                <%= image_tag course.image.variant(resize_to_fit: [300, 300]) %>
+                <% else%>
+                <%end%>
+                <div class="card-footer justify-content-center">
+                <%= link_to 'Show', course, class: 'btn btn-sm btn-warning' %>
+                <% if course.user_id == current_user.id || current_user.admin? %>
+              <%= link_to 'Edit', edit_course_path(course), class: 'btn btn-sm btn-warning' %>
+              <%#= button_to 'Delete', course_path(course), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-warning' %>
+              <%= link_to 'Delete',course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-warning' %>
+                <% else %>
+            <% end %>
+ 
+        <div class="card-body">
+            <div class="card-header">
+                <div class="fa fa-book"></div>
+                <%= link_to course.title, course_path(course) %>
+            </div>
+            <div>
+                
+            </div>
+            <div class="card-text">
+                <%= course.description %>
+            </div>
+            <div class="card-footer">
+                <div class="far fa-clock"></div>
+                <%= course.created_at.strftime('%d-%b-%Y') %>
+                <div class="row"></div>
+                <div class="fa fa-chalkboard-teacher"></div>
+                <%= course.user %>
+            </div>
+        </div>
+    </div>    
+</div>

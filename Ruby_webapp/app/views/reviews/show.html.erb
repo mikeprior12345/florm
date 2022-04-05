@@ -1,0 +1,8 @@
+<h2><%= @review.content%> - <%= @review.user_id%></h2>
+
+<% if @review.user == current_user %>
+  <%= link_to "Edit Review", edit_review_path(@review)%>
+<% end %>
+
+
+<h4>View the course here: <%= link_to @review.course.title, course_path(@review.course_id) %></h4>

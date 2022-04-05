@@ -1,0 +1,10 @@
+<h1><%= review_index_header %></h1>
+
+<ul>
+<% @reviews.each do |r|%>
+  <li><%= r.user.email %> says "<%= r.content%>" about this course: <strong><%= link_to r.course.title, course_path(r.course_id) %></strong> and gave it a rating of <%= r.rating %></li>
+<% end %>
+</ul>
+
+<h4><%= link_to 'Back', course_path(@course), class: "btn btn-warning"  %></h4>
+
